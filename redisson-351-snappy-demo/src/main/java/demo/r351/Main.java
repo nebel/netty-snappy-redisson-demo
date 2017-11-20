@@ -30,6 +30,10 @@ public class Main {
     System.out.println("Result has " + result.size() + " elements.");
     System.out.println("Element 0: " + result.get(0));
     System.out.println("Element " + result.size() + ": " + result.get(result.size() - 1));
+
+    if (!list.equals(result)) {
+      throw new IOException("Decoding failed! Input and output are not equal.");
+    }
   }
 
   private static List<String> createList(final int size) {
