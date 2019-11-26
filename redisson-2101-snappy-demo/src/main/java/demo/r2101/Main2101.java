@@ -1,4 +1,4 @@
-package demo.r2105;
+package demo.r2101;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -18,7 +18,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
 @SuppressWarnings("Duplicates")
-public class Main {
+public class Main2101 {
   private static final int SIZE = 1_000;
 
   public static void main(final String[] args) throws IOException {
@@ -28,14 +28,12 @@ public class Main {
 
     final List<String> list = createList(SIZE);
 
-    // For Redisson 2.10.5
-    final ByteBuf encoded = encoder.encode(list);
+    // For Redisson 2.10.1
+    final byte[] encoded = encoder.encode(list);
     saveBuf(encoded);
 
-    final byte[] diskBytes = Files.readAllBytes(FileSystems.getDefault().getPath("C:\\tmp\\encoded-2106.data"));
-    final ByteBuf diskBuf = Unpooled.wrappedBuffer(diskBytes);
-
-    final List<String> result = (List<String>) decoder.decode(diskBuf, null);
+    final byte[] diskBytes = Files.readAllBytes(FileSystems.getDefault().getPath("C:\\tmp\\encoded-2101.data"));
+    final List<String> result = (List<String>) decoder.decode(Unpooled.wrappedBuffer(diskBytes), null);
 
     System.out.println("Result has " + result.size() + " elements.");
     System.out.println("Element 0: " + result.get(0));
@@ -46,11 +44,12 @@ public class Main {
     }
   }
 
-  private static void saveBuf(final ByteBuf buf) throws IOException {
-    byte[] bytes = new byte[buf.readableBytes()];
-    buf.readBytes(bytes);
 
-    Files.write(FileSystems.getDefault().getPath("C:\\tmp\\encoded-2105.data"), bytes);
+  private static void saveBuf(final byte[] bytes) throws IOException {
+//    byte[] bytes = new byte[buf.readableBytes()];
+//    buf.readBytes(bytes);
+
+    Files.write(FileSystems.getDefault().getPath("C:\\tmp\\encoded-2101.data"), bytes);
   }
 
   private static List<String> createList(final int size) {

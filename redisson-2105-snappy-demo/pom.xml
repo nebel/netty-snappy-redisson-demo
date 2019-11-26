@@ -47,7 +47,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>demo.r2105.Main</mainClass>
+                    <mainClass>demo.r2105.Main2015</mainClass>
                 </configuration>
             </plugin>
         </plugins>

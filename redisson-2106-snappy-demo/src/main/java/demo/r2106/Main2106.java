@@ -18,7 +18,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
 @SuppressWarnings("Duplicates")
-public class Main {
+public class Main2106 {
   private static final int SIZE = 1_000;
 
   public static void main(final String[] args) throws IOException {
@@ -32,7 +32,7 @@ public class Main {
     final ByteBuf encoded = encoder.encode(list);
     saveBuf(encoded);
 
-    final byte[] diskBytes = Files.readAllBytes(FileSystems.getDefault().getPath("C:\\tmp\\encoded-2105.data"));
+    final byte[] diskBytes = Files.readAllBytes(FileSystems.getDefault().getPath("C:\\tmp\\encoded-2106.data"));
     final ByteBuf diskBuf = Unpooled.wrappedBuffer(diskBytes);
 
     final List<String> result = (List<String>) decoder.decode(diskBuf, null);
